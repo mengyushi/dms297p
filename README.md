@@ -6,3 +6,15 @@ Team members:
 - Yushi Meng
 - Feihong Qian
 - Han Song
+
+Project Proposal:
+https://docs.google.com/document/d/1KOQ5fE2NVWaqRg1M7qIccniOvBgW8AfeXixWnX8-914/mobilebasic
+
+Sprint:
+https://docs.google.com/document/d/1bXXU7CwVooyd6thg1-SbyRLN9wF2bPs2OUrSTs-EWi8/edit?usp=sharing
+
+Meeting Notes:
+https://docs.google.com/document/d/1aaUfDuRWAmLSnUojXN7PtoywFoqYurpR8emDdH0GWnM/edit?usp=sharing
+
+Trello Board for first sprint:
+https://github.com/mengyushi/dms297p/projects/1
