@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-<title>room-ies</title>
-<%= csrf_meta_tags %>
+<title>W3.CSS Template</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
-<%= stylesheet_link_tag 'application', media: 'all' %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,6 +18,12 @@ img {margin-bottom: -7px}
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-black w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
     <i class="fa fa-remove"></i>
   </a>
+  <div class="w3-bar-block w3-center">
+    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
+    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Photos</a>
+    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Shop</a>
+    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Contact</a>
+  </div>
 </nav>
 
 <!-- !PAGE CONTENT! -->
@@ -35,16 +39,19 @@ img {margin-bottom: -7px}
 <!-- End Page Content -->
 </div>
 
-<div class="container">
-  <%= yield %>
-</div>
+<%= yield %>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"> 
-  <a href="https://github.com/mengyushi/dms297p" target="_blank" style="color:black"><i class="fa fa-github w3-hover-opacity"></i></a>
-  <!-- <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p> -->
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
-<%= javascript_include_tag "application" %> 
+ 
 <script>
 // Open and close sidebar
 function w3_open() {
@@ -56,5 +63,6 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 </script>
+
 </body>
 </html>
