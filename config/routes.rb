@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
 
-  get 'signup'  => 'users#new'
+  get 'sessions/new'
+  get  '/signup',  to: 'users#new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
