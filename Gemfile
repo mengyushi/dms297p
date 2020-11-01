@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '>= 2.3.5', '< 2.8'
+ruby '>= 2.3.1', '< 2.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use SCSS for stylesheets
@@ -13,8 +13,6 @@ gem 'uglifier'
 gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-gem 'bootsnap', require: false
-gem 'listen'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -39,4 +37,3 @@ gem 'puma'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'slim'
