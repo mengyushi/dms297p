@@ -1,7 +1,13 @@
+
 <%= form_for @user do |form| %>
   <p>
     <%= form.label :Name %><br>
-    <%= form.text_field :user_name %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :Email %><br>
+    <%= form.text_field :email %>
   </p>
  
   <p>
