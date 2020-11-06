@@ -19,11 +19,13 @@ img {margin-bottom: -7px}
     <i class="fa fa-remove"></i>
   </a>
   <div class="w3-bar-block w3-center">
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Photos</a>
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Shop</a>
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Contact</a>
-  </div>
+    <% if logged_in? %>
+    <%= link_to "Profile", current_user %>
+    <%= link_to "Settings", edit_user_path(current_user) %>
+    <%= link_to "Log out", logout_path, method: :delete %>
+  <% else %>
+    <li><%= link_to "Log in", login_path %></li>
+  <% end %>  </div>
 </nav>
 
 <!-- !PAGE CONTENT! -->

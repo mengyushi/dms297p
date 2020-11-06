@@ -19,7 +19,21 @@ class UsersController < ApplicationController
 	  return false if remember_digest.nil?
 	  BCrypt::Password.new(remember_digest).is_password?(remember_token)
 	end
-  
+
+	def edit
+		@user = User.find(params[:id])
+	  end
+   
+	  def update
+		@user = User.find(params[:id])
+		if @user.update_attributes(user_params)
+		  flash[:success] = "Profile updated"
+		  redirect_to @user
+		else
+		  render 'edit'
+		end
+	  end 
+	  
 	# Forgets a user.
 	def forget
 	  update_attribute(:remember_digest, nil)
