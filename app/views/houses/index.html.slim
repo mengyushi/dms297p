@@ -1,20 +1,11 @@
-<h1>Houses#index</h1>
-<p>Log into House</p>
+h1 Houses
+h2 Log into House
 
-<%= form_with url: login_house_path do |form| %>
-  <p>
-    <%= form.label :Name %><br>
-    <%= form.text_field :name %>
-  </p>
- 
-  <p>
-    <%= form.label :Code%><br>
-    <%= form.text_area :code %>
-  </p>
+= form_with url: login_house_path do |form| 
+  = form.label :Name 
+  = form.text_field :name
+  = form.label :Code
+  = form.text_area :code 
+  = form.submit 
 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-
-<%= link_to "Create New House", new_house_path %>
+= link_to "Create New House", new_house_path 
