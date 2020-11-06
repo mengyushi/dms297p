@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>DMS</title>
+<%= csrf_meta_tags %>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -20,6 +21,11 @@ img {margin-bottom: -7px}
   </a>
   <div class="w3-bar-block w3-center">
     <% if logged_in? %>
+      <% if !@house.nil? %>
+        <%= link_to @house.name, house_path(@house) %>
+      <% else %>
+        <%= link_to "Login / Create House", houses_path %>
+      <% end %>
       <%= link_to "Profile", current_user,style: 'display: block' %>
       <%= link_to "Settings", edit_user_path(current_user), style: 'display: block' %>
       <%= link_to "Log out", logout_path, method: :delete , style: 'display: block'%>
@@ -59,6 +65,8 @@ img {margin-bottom: -7px}
   <i class="fa fa-linkedin w3-hover-opacity"></i>
   <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
+
+<%= javascript_include_tag "application" %>
  
 <script>
 // Open and close sidebar
