@@ -1,0 +1,13 @@
+.new-message
+  - roommates_names = []
+  - if @roommates != nil
+    - @roommates.each do |roommate|
+      - roommates_names << roommate.name
+    = form_for @message do |form| %
+      .to
+        p To:
+        = form.select :to_id ,roommates_names, {:required => true}
+      .content
+        = form.text_area :content, {:required => true}
+
+      = form.submit 'Send Message', class: 'new-message-submit'
