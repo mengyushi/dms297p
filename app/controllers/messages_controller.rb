@@ -6,19 +6,18 @@ class MessagesController < ApplicationController
 	def create
 	  @message = Message.new(message_params)
 	  @message.open = true
-	  @message.from = current_user.id
+	  @message.from_id = current_user.id
+	  @message.to_id = current_user.house.users.find_by(name:message_params[:to_id]).id
 	  @message.save
-	  redirect_to @message
+	  redirect_to messages_path
 	end
-
-	def show
-      @message = Message.find(params[:id])
-	  end
 	  
   	def index
-		@recieved = Message.where(to:current_user.id)
-		@send = Message.where(from:current_user.id)
-	  end
+  	  @recieved = Message.where(to_id:current_user.id)
+   	  @send = Message.where(from_id:current_user.id)
+   	  @recent_messages = Message.where(from_id:current_user.id).or(Message.where(to_id:current_user.id)).order('id desc').limit(20)
+   	  @roommates = current_user.house.users
+	end
 
 
 	def destroy
@@ -30,6 +29,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:to, :content)
+    params.require(:message).permit(:to_id, :content)
   end
 end
