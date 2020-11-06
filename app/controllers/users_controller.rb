@@ -1,17 +1,22 @@
 class UsersController < ApplicationController
 	def new
-	  @user = User.new
+	  	@user = User.new
 	end
   
 	def create
-	  @user = User.new(user_params)
-	  @user.balance = 0
-	  @user.save
-	  redirect_to @user
+		@user = User.new(user_params)
+		@user.balance = 0
+		if @user.save
+		  flash[:success] = "Welcome to the Sample App!"
+		  redirect_to @user
+		else
+		  flash[:danger] = "Sth Goes Wrong!"
+		  render 'new'
+		end
 	end
   
 	def show
-	  @user = User.find(params[:id])
+	  	@user = User.find(params[:id])
 	end
   
 	# Returns true if the given token matches the digest.
@@ -22,25 +27,25 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
-	  end
+	end
    
-	  def update
+	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-		  flash[:success] = "Profile updated"
-		  redirect_to @user
+			flash[:success] = "Profile updated"
+			redirect_to @user
 		else
-		  render 'edit'
+			render 'edit'
 		end
-	  end 
+	end 
 	  
 	# Forgets a user.
 	def forget
-	  update_attribute(:remember_digest, nil)
+		update_attribute(:remember_digest, nil)
 	end
   
   private
 	def user_params
-	  params.require(:user).permit(:name, :password, :email)
+		params.require(:user).permit(:name, :password, :email)
 	end
   end

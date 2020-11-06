@@ -20,12 +20,12 @@ img {margin-bottom: -7px}
   </a>
   <div class="w3-bar-block w3-center">
     <% if logged_in? %>
-    <%= link_to "Profile", current_user %>
-    <%= link_to "Settings", edit_user_path(current_user) %>
-    <%= link_to "Log out", logout_path, method: :delete %>
-  <% else %>
-    <li><%= link_to "Log in", login_path %></li>
-  <% end %>  </div>
+      <%= link_to "Profile", current_user,style: 'display: block' %>
+      <%= link_to "Settings", edit_user_path(current_user), style: 'display: block' %>
+      <%= link_to "Log out", logout_path, method: :delete , style: 'display: block'%>
+    <% else %>
+      <%= link_to "Log in", login_path %>
+    <% end %>  </div>
 </nav>
 
 <!-- !PAGE CONTENT! -->
@@ -39,6 +39,12 @@ img {margin-bottom: -7px}
 </div>
 
 <!-- End Page Content -->
+</div>
+
+<div class="container">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 </div>
 
 <%= yield %>
