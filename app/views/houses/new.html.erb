@@ -1,0 +1,25 @@
+<h1>Houses#new</h1>
+ <p>Create a new house</p>
+
+ <%= form_for @house do |form| %>
+   <p>
+     <%= form.label :Name %><br>
+     <%= form.text_field :name %>
+   </p>
+
+   <p>
+     <%= form.label :Code%><br>
+     <%= form.text_area :code %>
+   </p>
+
+   <p>
+     <%= form.label :Currency%><br>
+     <%= form.text_area :currency %>
+   </p> 
+
+   <p>
+     <%= form.submit %>
+   </p>
+ <% end %>
+
+ <%= link_to "Login Exist House", houses_path %>
