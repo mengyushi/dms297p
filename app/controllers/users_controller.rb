@@ -4,10 +4,15 @@ class UsersController < ApplicationController
 	end
   
 	def create
-	  @user = User.new(user_params)
-	  @user.balance = 0
-	  @user.save
-	  redirect_to @user
+		@user = User.new(user_params)
+		@user.balance = 0
+		if @user.save
+			flash[:success] = "Welcome to the Sample App!"
+			redirect_to @user
+		else
+			flash[:danger] = "Sth Goes Wrong!"
+			render 'new'
+		end
 	end
   
 	def show
@@ -24,6 +29,20 @@ class UsersController < ApplicationController
 	def forget
 	  update_attribute(:remember_digest, nil)
 	end
+
+	def edit
+		@user = User.find(params[:id])
+	  end
+	
+	  def update
+		@user = User.find(params[:id])
+		if @user.update_attributes(user_params)
+		  flash[:success] = "Profile updated"
+		  redirect_to @user
+		else
+		  render 'edit'
+		end
+	  end
   
   private
 	def user_params
