@@ -21,7 +21,7 @@ img {margin-bottom: -7px}
   </a>
   <div class="w3-bar-block w3-center">
     <% if logged_in? %>
-      <% if current_user.house_id==nil %>
+      <% if current_user.house==nil %>
         <%= link_to "Login / Create House", houses_path %>
       <% else %>
         <%= link_to current_user.house.name, house_path(current_user.house) %> 
