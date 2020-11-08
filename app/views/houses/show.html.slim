@@ -1,0 +1,10 @@
+.home
+	p Welcome Home #{current_user.name} !
+	p My home: #{current_user.house.name}
+	.my-roommates
+		p My roommates:
+		- current_user.house.users.each do |roommate|
+			- if roommate!=current_user
+				.my-roommate
+					= link_to roommate.name, user_path(roommate)
+                    

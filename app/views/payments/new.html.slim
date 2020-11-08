@@ -1,0 +1,10 @@
+.new-payment
+	= form_for @payment do |form|
+		.amount
+		  p Amount:
+		  = form.number_field :amount, {:required => true}
+	 	.description
+		  = form.text_area :description, {:required => true}
+
+		= form.submit 'Log payment'
+        

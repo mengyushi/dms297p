@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20210612143204) do
     t.text "content"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "house_id"
+    t.text "description"
+    t.integer "question"
+    t.float "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"

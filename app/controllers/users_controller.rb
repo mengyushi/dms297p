@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def new
-	  @user = User.new
+		@user = User.new
 	end
   
 	def create
@@ -16,36 +16,48 @@ class UsersController < ApplicationController
 	end
   
 	def show
-	  @user = User.find(params[:id])
+		unless current_user
+			return redirect_to '/login'
+		end
+		@user = User.find(params[:id])
+		if current_user.house != @user.house
+			return redirect_to root_url
+		end
+		if current_user.house
+			@roommates = current_user.house.users
+			@messages_from = Message.where(from_id:current_user.id).where(to_id:@user.id)
+			@messages_to = Message.where(to_id:current_user.id).where(from_id:@user.id)
+			@messages = (@messages_from.or(@messages_to)).order('id desc')
+		end
 	end
   
 	# Returns true if the given token matches the digest.
 	def authenticated?(remember_token)
-	  return false if remember_digest.nil?
-	  BCrypt::Password.new(remember_digest).is_password?(remember_token)
+		return false if remember_digest.nil?
+		BCrypt::Password.new(remember_digest).is_password?(remember_token)
 	end
   
 	# Forgets a user.
 	def forget
-	  update_attribute(:remember_digest, nil)
+		update_attribute(:remember_digest, nil)
 	end
 
 	def edit
 		@user = User.find(params[:id])
-	  end
+	end
 	
-	  def update
+	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-		  flash[:success] = "Profile updated"
-		  redirect_to @user
+			flash[:success] = "Profile updated"
+			redirect_to @user
 		else
-		  render 'edit'
+			render 'edit'
 		end
-	  end
-  
-  private
-	def user_params
-	  params.require(:user).permit(:name, :password, :email)
 	end
-  end
+	
+private 
+	def user_params
+		params.require(:user).permit(:name, :password, :email)
+	end
+end
