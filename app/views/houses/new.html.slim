@@ -1,0 +1,14 @@
+h1 Houses#new
+p Create a new house
+
+= form_for @house do |form|
+  = form.label :Name
+  = form.text_field :name
+  = form.label :Code
+  = form.text_area :code 
+  = form.label :Currency
+  = form.text_area :currency 
+  = form.submit 
+
+
+= link_to "Login Exist House", houses_path

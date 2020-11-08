@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20210612143204) do
     t.boolean "open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
   end
 
   create_table "users", force: :cascade do |t|

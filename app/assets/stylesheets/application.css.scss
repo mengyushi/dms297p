@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+
+  .messages {
+    .message {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      .to {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+      .from {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+      a {
+        margin-left: 10px;
+        display: inline-block;
+      }
+      .content {
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+        max-height: 130px;
+        word-wrap: break-word;
+        overflow: scroll;
+        background-color: #e0e0e0;
+        border-radius: 10px;
+      }
+      .time {
+        margin: 0;
+        text-align: right;
+        font-size: 10px;
+        width: 100%;
+        color: #e0e0e0;
+      }
+    }
+  }
+  .new-message {
+    .to {
+      p {
+        display: inline-block;
+      }
+      a {
+        display: inline-block;
+      }
+    }
+    .content {
+      textarea {
+        height: 200px;
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 10px;
+        border-style: none;
+        overflow-y: scroll;
+      }
+    }
+  }
+}
