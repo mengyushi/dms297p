@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :houses
+  post '/login_house', to: 'houses#login_house'
+  
+  get 'sessions/new'
+
   resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,8 +16,8 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
 
-  get 'sessions/new'
   get  '/signup',  to: 'users#new'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
