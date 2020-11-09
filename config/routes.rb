@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  resources :payments
+  resources :balance
+
+  resources :houses
+  post '/login_house', to: 'houses#login_house'
+  
+  get 'sessions/new'
+
   resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,11 +19,11 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
 
-  get 'sessions/new'
   get  '/signup',  to: 'users#new'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get '/logout',  to: 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

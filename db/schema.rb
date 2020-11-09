@@ -10,18 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201102131549) do
+ActiveRecord::Schema.define(version: 20210612143204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "houses", force: :cascade do |t|
+    t.string "name"
+    t.string "currency"
+    t.float "rent"
+    t.float "balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "code"
+  end
+
   create_table "messages", force: :cascade do |t|
-    t.integer "from"
-    t.integer "to"
+    t.integer "from_id"
+    t.integer "to_id"
     t.boolean "open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "content"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "house_id"
+    t.text "description"
+    t.integer "question"
+    t.float "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,6 +53,7 @@ ActiveRecord::Schema.define(version: 20201102131549) do
     t.string "email"
     t.string "password_digest"
     t.string "remember_digest"
+    t.integer "house_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -1,8 +1,11 @@
-
 class User < ApplicationRecord
   attr_accessor :remember_token
   has_many :messages
-  validates :name,  presence: true, length: { maximum: 50 }
+  has_many :payments
+  belongs_to :house
+  belongs_to :message
+  belongs_to :payment
+  validates :name,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: true }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },

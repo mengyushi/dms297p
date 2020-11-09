@@ -1,0 +1,16 @@
+= link_to 'New Message', new_message_path
+- if @recent_messages
+	.messages
+		- @recent_messages.each do |message|
+			.message
+				- if message.from_id == current_user.id
+					p.to To #{@roommates.find(message.to_id).name}
+
+					= link_to message_path(message), data: { confirm: 'Are You Sure？' }, method: :delete		
+						i.fa.fa-remove
+				- else
+					p.from From #{@roommates.find(message.from_id).name}
+					= link_to messages_path
+						i.fa.fa-reply			
+				p.content = message.content
+				p.time = message.created_at

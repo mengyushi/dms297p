@@ -1,0 +1,10 @@
+.w3-content style="max-width:1500px" 
+  .w3-opacity
+    header.w3-center.w3-margin-bottom
+      h1 roommates
+      p = '$ '+ current_user.balance.to_s
+      .sample
+        - if current_user.house==nil 
+          = link_to "Login / Create House", houses_path
+        - else 
+          = link_to current_user.house.name, house_path(current_user.house)

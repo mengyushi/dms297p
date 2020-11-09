@@ -1,0 +1,19 @@
+p = current_user.balance
+= link_to 'New Payment', new_payment_path
+
+.payments
+  - @payments.each do |payment|
+    .payment
+      table
+        tbody
+          tr
+            th = payment.user.name
+            td #{current_user.house.currency} #{payment.amount}
+              
+      .description
+        p = payment.description
+      p.time = payment.created_at	
+      - if payment.user == current_user
+        = link_to payment_path(payment), data: { confirm: 'Are You Sure？' }, method: :delete		
+          i.fa.fa-remove
+          
