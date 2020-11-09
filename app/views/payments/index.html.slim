@@ -1,9 +1,23 @@
-p = current_user.balance
+p Balance: #{current_user.house.currency} #{current_user.balance}
 = link_to 'New Payment', new_payment_path
 
 .payments
   - @payments.each do |payment|
     .payment
+      .delete	
+      - if payment.user == current_user
+        = link_to payment_path(payment), data: { confirm: 'Are You Sure？' }, method: :delete		
+          i.fa.fa-remove
+      - else
+      .question
+        - unless payment.question
+          = form_for @question do |form|
+            = form.hidden_field :payment_id, :value => payment.id
+            = form.hidden_field :user_id, :value => current_user.id
+            = form.submit 'Have Question?', data: { confirm: 'Are You Sure？' }
+        - else
+          p Quested by #{payment.question.user.name}
+
       table
         tbody
           tr
@@ -13,7 +27,4 @@ p = current_user.balance
       .description
         p = payment.description
       p.time = payment.created_at	
-      - if payment.user == current_user
-        = link_to payment_path(payment), data: { confirm: 'Are You Sure？' }, method: :delete		
-          i.fa.fa-remove
           

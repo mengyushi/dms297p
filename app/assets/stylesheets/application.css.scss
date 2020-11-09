@@ -163,7 +163,21 @@
           margin: 0;
         }
       }
+      .delete{
+        display: inline-block;
+        margin: 0;
+        text-align: right;
+        font-size: 10px;
+      }
+      .question{
+        display: inline-block;
+        margin: 0;
+        text-align: right;
+        font-size: 10px;
+        width: 100%;
+      }
       .time {
+        display: inline-block;
         margin: 0;
         text-align: right;
         font-size: 10px;

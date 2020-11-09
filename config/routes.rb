@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :payments
   resources :balance
+  resources :questions
 
   resources :houses
   post '/login_house', to: 'houses#login_house'

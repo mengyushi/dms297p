@@ -1,0 +1,16 @@
+p here
+p =  @questions
+p =  @questions.size
+.questions
+  - @questions.each do |question|
+    p = question.payment
+    .question
+      table
+        tbody
+           tr
+             th = question.id
+             th = question.payment_id
+             td = question.user.name
+             - if question.user == current_user
+               = link_to question_path(question), data: { confirm: 'Are You Sure？' }, method: :delete		
+                 i.fa.fa-remove

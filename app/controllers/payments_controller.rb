@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
         redirect_to root_url if current_user.nil?
         redirect_to houses_path if current_user.house.nil?
         @payments = current_user.house.payments
+        @question = Question.new
     end
   
     def create
