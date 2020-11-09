@@ -1,16 +1,36 @@
-p here
-p =  @questions
-p =  @questions.size
 .questions
-  - @questions.each do |question|
-    p = question.payment
-    .question
-      table
-        tbody
-           tr
-             th = question.id
-             th = question.payment_id
-             td = question.user.name
-             - if question.user == current_user
-               = link_to question_path(question), data: { confirm: 'Are You Sure？' }, method: :delete		
-                 i.fa.fa-remove
+  - if @questions.empty?
+    p No questions currently
+    
+  - else
+    p Questions from you
+    - @questions.each do |question|
+      - if question.user == current_user
+        .question
+          table
+            tbody
+              tr
+                = link_to question_path(question), data: { confirm: 'Are You Sure？' }, method: :delete		
+                  i.fa.fa-remove Delete this question?
+              
+                th = question.payment.user.name
+                td #{current_user.house.currency} #{question.payment.amount}
+                
+          .description
+            p = question.payment.description
+          p.time = question.payment.created_at
+    p Questions from others
+    - @questions.each do |question|
+      - if question.user != current_user
+        .question
+          table
+            tbody
+              tr
+                p Questioned by #{question.user.name}
+              
+                th = question.payment.user.name
+                td #{current_user.house.currency} #{question.payment.amount}
+                
+          .description
+            p = question.payment.description
+          p.time = question.payment.created_at
