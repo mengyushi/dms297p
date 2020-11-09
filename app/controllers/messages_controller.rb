@@ -18,13 +18,14 @@ class MessagesController < ApplicationController
 		@send = Message.where(from_id:current_user.id)
 		@recent_messages = Message.where(from_id:current_user.id).or(Message.where(to_id:current_user.id)).order('id desc').limit(20)
 		@roommates = current_user.house.users
+		@message = Message.new
 	end
 
 	def destroy
 	  	@message = Message.find(params[:id])
 	  	@message.destroy
 	  
-	  	redirect_to messages_path
+	  	return redirect_to messages_path
 	end
 
 private
