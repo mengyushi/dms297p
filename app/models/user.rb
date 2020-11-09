@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :payments
   has_many :questions
+  has_many :repays
   belongs_to :house
   belongs_to :message
   belongs_to :payment
