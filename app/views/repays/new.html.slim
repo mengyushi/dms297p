@@ -1,0 +1,12 @@
+.new-repay
+ 	- roommates_names = []
+ 	- @roommates.each do |roommate|
+ 		- roommates_names << roommate.name
+ 	= form_for @repay do |form|
+ 		.to
+ 		  p To:
+ 		  = form.select :to_id ,roommates_names, {:required => true}
+ 	 	.amount
+ 		  = form.number_field :amount, {:required => true}
+
+ 		= form.submit 'Repay'

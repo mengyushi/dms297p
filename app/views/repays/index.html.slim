@@ -1,0 +1,39 @@
+p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
+= link_to 'New Repay', new_repay_path
+
+
+
+.repays
+  p Repay to you
+  - @to_me.each do |repay|
+    .repay
+      .comfirm
+        - if repay.to_id == current_user.id && repay.confirmed == false
+          = link_to repay_path(repay), data: { confirm: 'Sure you recieved it？' }, method: :patch		
+            i.fa.fa-check Confirme it?
+        - elsif repay.to_id == current_user.id && repay.confirmed == true
+            i.fa.fa-check-square Confirmed
+      table
+        tbody
+          tr
+            th = repay.user.name
+            td #{current_user.house.currency} #{repay.amount}
+            
+      p.time = repay.created_at 
+      
+  p Repay from you            
+  - @from_me.each do |repay|
+    .repay
+      .comfirm
+        - if repay.confirmed == false
+          i.fa.fa-question Waiting for Confirmation
+        - else
+          i.fa.fa-check-square Confirmed    
+    
+      table
+        tbody
+          tr
+            th = User.find(repay.to_id).name
+            td #{current_user.house.currency} #{repay.amount}
+            
+      p.time = repay.created_at  

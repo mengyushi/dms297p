@@ -4,7 +4,7 @@
 <%= csrf_meta_tags %>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'application', media: 'all' %>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,11 +24,14 @@ img {margin-bottom: -7px}
     <% if logged_in? %>
       <% if !current_user.house.nil? %>
         <%= link_to "My house", house_path(current_user.house) %>
+        <%= link_to "Messages", messages_path,style: 'display: block' %>
+        <%= link_to "Payments", payments_path,style: 'display: block' %>
+        <%= link_to "Questions", questions_path,style: 'display: block' %>
+        <%= link_to "Repays", repays_path,style: 'display: block' %>
       <% else %>
         <%= link_to "Login / Create House", houses_path %>
       <% end %>
       <%= link_to "Profile", current_user,style: 'display: block' %>
-      <%= link_to "Messages", messages_path,style: 'display: block' %>      
       <%= link_to "Settings", edit_user_path(current_user), style: 'display: block' %>
       <%= link_to "Log out", logout_path, style: 'display: block'%>
     <% else %>

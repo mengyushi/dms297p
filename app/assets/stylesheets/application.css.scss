@@ -14,162 +14,233 @@
  *= require_self
  */
 
-.w3-sidebar {
-  a {
-    font-size: 32px;
-    text-decoration: none;
-  }
+ .w3-sidebar {
+	a {
+		font-size: 32px;
+		text-decoration: none;
+	}
 }
 
 .container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 10%;
-  margin-right: 10%;
 
-  .messages {
-    .message {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      .to {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: inline-block;
-      }
-      .from {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: inline-block;
-      }
-      a {
-        margin-left: 10px;
-        display: inline-block;
-      }
-      .content {
-        margin: 0;
-        padding: 10px;
-        width: 100%;
-        max-height: 130px;
-        word-wrap: break-word;
-        overflow: scroll;
-        background-color: #e0e0e0;
-        border-radius: 10px;
-        p {
-          margin: 0;
-        }
-      }
-      .time {
-        margin: 0;
-        text-align: right;
-        font-size: 10px;
-        width: 100%;
-        color: #e0e0e0;
-      }
-    }
-  }
-  .new-message {
-    .to {
-      p {
-        display: inline-block;
-      }
-      a {
-        display: inline-block;
-      }
-    }
-    .content {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 10%;
+	margin-right: 10%;
+
+	.messages {
+		.message {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			.to {
+				margin-top: 10px;
+				margin-bottom: 10px;				
+				display: inline-block;
+			}
+			.from {
+				margin-top: 10px;
+				margin-bottom: 10px;
+				display: inline-block;
+			}
+			a {
+				margin-left: 10px;
+				display: inline-block;
+			}
+			.content {
+				margin: 0;
+				padding: 10px;		
+				width: 100%;
+				max-height: 130px;
+				word-wrap:break-word; 
+				overflow: scroll;
+				background-color: #e0e0e0;
+				border-radius: 10px;
+				p {
+					margin: 0;
+				}
+			}
+			.time {
+				margin: 0;
+				text-align: right;
+				font-size: 10px;
+				width: 100%;
+				color: #e0e0e0;
+			}	
+			.reply{
+				display: none;
+				textarea {
+	              height: 40px;
+	              width: 100%;
+	              background-color: #f2f2f2;
+	              border-radius: 10px;
+	              border-style: none;
+	              overflow-y: scroll;
+	            }				
+			}		
+		}
+	}
+	.new-message{
+		.to {
+			p {
+				display: inline-block;
+			}
+			a {
+				display: inline-block;
+			}
+		}
+		.content{
       textarea {
-        height: 200px;
-        width: 100%;
-        background-color: #e0e0e0;
-        border-radius: 10px;
-        border-style: none;
-        overflow-y: scroll;
-      }
-    }
-  }
-  .login {
-    input[type="button"],
-    input[type="email"],
-    input[type="submit"],
-    input[type="password"],
-    select {
-      -webkit-appearance: none;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      border-radius: 2px;
-      border: 1px solid #dbdbdb;
-      padding: 4px 8px;
-      box-sizing: border-box;
-    }
-    input[type="radio"] {
-      vertical-align: middle;
-    }
-    input[type="number"] {
-      ime-mode: disabled;
-    }
+              height: 200px;
+              width: 100%;
+              background-color: #e0e0e0;
+              border-radius: 10px;
+              border-style: none;
+              overflow-y: scroll;
+            }
+		}
+	}
+	.login {
+		input[type="button"],input[type="email"],input[type="submit"],input[type="password"], select {
+		  -webkit-appearance: none;
+		  -webkit-tap-highlight-color:rgba(0,0,0,0);
+		  border-radius: 2px;
+		  border: 1px solid #dbdbdb;
+		  padding: 4px 8px;
+		  box-sizing: border-box;
+		}
+		input[type="radio"] {
+		  vertical-align: middle;
+		}
+		input[type="number"] {
+		  ime-mode: disabled;
+		}
 
-    .remember-me {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      input[type="checkbox"],
-      select {
-        margin: 5px;
-        display: inline-block;
-        .p {
-          display: inline-block;
-        }
-      }
-    }
-    .sign-up {
-      p {
-        display: inline-block;
-      }
-      a {
-        margin-left: 5px;
-        display: inline-block;
-      }
-    }
-  }
-  .home {
-    .my-roommates {
-    }
-  }
-  .payments {
-    .payment {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      table {
-        width: 100%;
-        tbody {
-          th {
-            width: 50%;
-            text-align: left;
-          }
-          td {
-            width: 50%;
-            text-align: right;
-          }
-        }
-      }
-      .description {
-        margin: 0;
-        padding: 10px;
-        width: 100%;
-        max-height: 130px;
-        word-wrap: break-word;
-        overflow: scroll;
-        background-color: #e0e0e0;
-        border-radius: 10px;
-        p {
-          margin: 0;
-        }
-      }
-      .time {
-        margin: 0;
-        text-align: right;
-        font-size: 10px;
-        width: 100%;
-        color: #e0e0e0;
-      }
-    }
-  }
+		.remember-me{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			input[type="checkbox"], select {
+				margin: 5px;
+				display: inline-block;
+				.p {
+					display: inline-block;
+				}
+			}
+		}
+		.sign-up{
+			p {
+				display: inline-block;
+			}
+			a {
+				margin-left: 5px;
+				display: inline-block;
+			}			
+		}
+	}
+	.home{
+		.my-roommates{
+
+		}
+	}
+	.payments{
+		.payment{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding: 5px;
+			border-radius: 10px;
+			border: #dbdbdb 1px solid;
+			table{
+				width: 100%;
+				tbody{
+					th{
+						width: 50%;
+						text-align: left;
+					}
+					td{
+						width: 50%;
+						text-align: right;
+					}
+				}
+			}
+			.description {
+				margin: 0;
+				padding: 10px;		
+				width: 100%;
+				max-height: 130px;
+				word-wrap:break-word; 
+				overflow: scroll;
+				background-color: #e0e0e0;
+				border-radius: 10px;
+				p {
+					margin: 0;
+				}
+			}
+			.delete{
+				display: inline-block;
+				margin: 0;
+				text-align: right;
+				font-size: 10px;
+			}
+			.question{
+				display: inline-block;
+				margin: 0;
+				text-align: right;
+				font-size: 10px;
+				width: 100%;
+				input{
+					text-decoration: underline;
+				}
+			}
+			.time {
+				display: inline-block;
+				margin: 0;
+				text-align: right;
+				font-size: 10px;
+				width: 100%;
+				color: #e0e0e0;
+			}	
+		}
+	}
+	.repays{
+		.repay{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding: 5px;
+			border-radius: 10px;
+			border: #dbdbdb 1px solid;
+			.comfirm{
+				a{
+					i{
+						text-decoration: underline;
+					}
+				}
+			}
+			table{
+				width: 100%;
+				tbody{
+					th{
+						width: 50%;
+						text-align: left;
+					}
+					td{
+						width: 50%;
+						text-align: right;
+					}
+				}
+			}
+			.delete{
+				display: inline-block;
+				margin: 0;
+				text-align: right;
+				font-size: 10px;
+			}
+			.time {
+				display: inline-block;
+				margin: 0;
+				text-align: right;
+				font-size: 10px;
+				width: 100%;
+				color: #e0e0e0;
+			}	
+		}
+	}	
 }
