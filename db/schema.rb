@@ -98,6 +98,9 @@ ActiveRecord::Schema.define(version: 2021_06_12_143204) do
     t.string "password_digest"
     t.string "remember_digest"
     t.integer "house_id"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -5,5 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? 
-
+if Rails.env.development?
+    AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  
+    User.create!(name:  "test01",
+                 email: "test01@exapmle.com",
+                 password:              "000000",
+                 password_confirmation: "000000",
+                 activated: true,
+                 activated_at: Time.zone.now)
+    User.create!(name:  "test02",
+                email: "test02@exapmle.com",
+                password:              "000000",
+                password_confirmation: "000000",
+                activated: true,
+                activated_at: Time.zone.now)
+    User.create!(name:  "test03",
+                email: "test03@exapmle.com",
+                password:              "000000",
+                password_confirmation: "000000",
+                activated: true,
+                activated_at: Time.zone.now)
+  end
+  
