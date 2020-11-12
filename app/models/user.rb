@@ -40,8 +40,10 @@ class User < ApplicationRecord
   end
 
   # Returns true if the given token matches the digest.
-  def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   # Forgets a user.
@@ -49,6 +51,17 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
   
+  # Activates an account.
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  # Sends activation email.
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end  
+
   private
 
     # Converts email to all lower-case.
@@ -58,7 +71,9 @@ class User < ApplicationRecord
 
     # Creates and assigns the activation token and digest.
     def create_activation_digest
-      self.activation_token  = User.new_token
+      self.activation_token = User.new_token
+      p "********************** activation_token ********************************"
+      p self.activation_token
       self.activation_digest = User.digest(activation_token)
     end  
       

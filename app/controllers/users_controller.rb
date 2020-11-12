@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		@user.balance = 0
 		if @user.save
-			UserMailer.account_activation(@user).deliver_now
+			@user.send_activation_email
 			flash[:info] = "Please check your email to activate your account."
 			redirect_to root_url
 		else
@@ -15,13 +15,19 @@ class UsersController < ApplicationController
 			render 'new'
 		end
 	end
+	
+	def index
+		@users = User.where(activated: FILL_IN).paginate(page: params[:page])
+	end
   
 	def show
 		unless current_user
 			return redirect_to '/login'
 		end
+		redirect_to root_url and return unless current_user
+	  
 		@user = User.find(params[:id])
-		if current_user.house != @user.house
+		if current_user.house!= @user.house
 			return redirect_to root_url
 		end
 		if current_user.house
@@ -33,20 +39,21 @@ class UsersController < ApplicationController
 	end
   
 	# Returns true if the given token matches the digest.
-	def authenticated?(remember_token)
-		return false if remember_digest.nil?
-		BCrypt::Password.new(remember_digest).is_password?(remember_token)
+	def authenticated?(attribute, token)
+		digest = send("#{attribute}_digest")
+		return false if digest.nil?
+		BCrypt::Password.new(digest).is_password?(token)
 	end
   
 	# Forgets a user.
 	def forget
-		update_attribute(:remember_digest, nil)
+	  	update_attribute(:remember_digest, nil)
 	end
-
+  
 	def edit
-		@user = User.find(params[:id])
+	  	@user = User.find(params[:id])
 	end
-	
+  
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
@@ -56,8 +63,8 @@ class UsersController < ApplicationController
 			render 'edit'
 		end
 	end
-	
-private 
+  
+private
 	def user_params
 		params.require(:user).permit(:name, :password, :email)
 	end
