@@ -37,3 +37,10 @@ gem 'slim'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'bcrypt',         '3.1.12'
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
