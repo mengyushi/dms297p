@@ -1,7 +1,7 @@
-p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
-= link_to 'New Payment', new_payment_path
-
 .payments
+  p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
+  = link_to 'New Payment', new_payment_path
+
   - @payments.each do |payment|
     .payment
       .delete	
@@ -18,9 +18,8 @@ p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
               = form.submit 'Have Question?', data: { confirm: 'Are You Sure？' }
           - else
             - if payment.question.user == current_user
-              p Question By Yourself
               = link_to question_path(payment.question), data: { confirm: 'Are You Sure？' }, method: :delete		
-                i.fa.fa-remove
+                i.fa.fa-remove Question By Yourself
             -else
               p Quested by #{payment.question.user.name}
         - elsif payment.question
@@ -35,3 +34,4 @@ p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
       .description
         p = payment.description
       p.time = payment.created_at
+      

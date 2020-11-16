@@ -1,9 +1,7 @@
-p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
-= link_to 'New Repay', new_repay_path
-
-
-
 .repays
+  p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
+  = link_to 'New Repay', new_repay_path
+
   p Repay to you
   - @to_me.each do |repay|
     .repay
@@ -36,4 +34,5 @@ p Balance: #{current_user.house.currency} #{current_user.balance.round(1)}
             th = User.find(repay.to_id).name
             td #{current_user.house.currency} #{repay.amount}
             
-      p.time = repay.created_at  
+      p.time = repay.created_at            
+     

@@ -6,5 +6,6 @@
 		- current_user.house.users.each do |roommate|
 			- if roommate!=current_user
 				.my-roommate
-					= link_to roommate.name, user_path(roommate)
-                    
+					= link_to user_path(roommate)
+						i.fa.fa-id-badge #{roommate.name}
+						                

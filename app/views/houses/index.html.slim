@@ -2,10 +2,10 @@ h1 Houses
 h2 Log into House
 
 = form_with url: login_house_path do |form| 
-  = form.label :Name 
+  p Name
   = form.text_field :name
-  = form.label :Code
-  = form.text_area :code 
-  = form.submit 
-
-= link_to "Create New House", new_house_path
+  p Code
+  = form.text_field :code
+  = form.submit 'Login'
+  
+= link_to "Create New House", new_house_path 
