@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_143204) do
+ActiveRecord::Schema.define(version: 2020_11_20_220342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 2021_06_12_143204) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "dices", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "house_id"
+    t.integer "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "houses", force: :cascade do |t|
@@ -88,6 +96,16 @@ ActiveRecord::Schema.define(version: 2021_06_12_143204) do
     t.integer "house_id"
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "house_id"
+    t.string "title"
+    t.string "description"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"
@@ -98,11 +116,11 @@ ActiveRecord::Schema.define(version: 2021_06_12_143204) do
     t.string "password_digest"
     t.string "remember_digest"
     t.integer "house_id"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
