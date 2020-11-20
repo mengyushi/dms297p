@@ -12,18 +12,21 @@ if Rails.env.development?
                  email: "test01@exapmle.com",
                  password:              "000000",
                  password_confirmation: "000000",
+                 balance: 0.0,
                  activated: true,
                  activated_at: Time.zone.now)
     User.create!(name:  "test02",
                 email: "test02@exapmle.com",
                 password:              "000000",
                 password_confirmation: "000000",
+                balance: 0.0,
                 activated: true,
                 activated_at: Time.zone.now)
     User.create!(name:  "test03",
                 email: "test03@exapmle.com",
                 password:              "000000",
                 password_confirmation: "000000",
+                balance: 0.0,
                 activated: true,
                 activated_at: Time.zone.now)
   end

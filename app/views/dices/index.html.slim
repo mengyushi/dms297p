@@ -1,0 +1,14 @@
+.roll-dice
+    p Welcome to dice roller!
+
+    - if @recent_rolls
+		- @recent_rolls.each do |roll|
+			.roll
+                p.user = roll.user.name
+				p.result = roll.result
+				p.time = roll.created_at
+
+    = form_for @dice do |form| %
+        .new-roll
+            = form.text_area :result
+        = form.submit 'Roll Dice', class: 'new-dice-submit'
