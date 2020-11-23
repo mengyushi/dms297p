@@ -1,0 +1,13 @@
+.new-schedule
+	= form_for @schedule do |form| %
+		.title
+			p Title:
+			= form.text_field :title, {:required => true}
+	 	.description
+			p Description:
+			= form.text_field :description
+		.place
+			p Place:
+			= form.text_field :place, {:required => true}
+		= form.submit 'Create New Schedule', class: 'new-schedule-submit'
+        

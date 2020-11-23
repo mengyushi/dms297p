@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   resources :dices
   resources :schedules
+  resources :intervals
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
