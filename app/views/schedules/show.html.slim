@@ -2,15 +2,30 @@
     table
         tbody
         tr
+            th title
+            td description
+            td place
+        tr
             th = @schedule.title
             td = @schedule.description
             td = @schedule.place
 
+    - if @common.length > 0
+        p time in common:
+        table
+            tbody
+            tr
+                td start
+                td end
+            - @common.each do |time|
+                tr
+                    td = time[0]
+                    td = time[1]
+
 .my-roommates
     - @roommates.each do |roommate|
         .my-roommate
-            = link_to user_path(roommate)
-                i.fa.fa-id-badge #{roommate.name}
+            p #{roommate.name}
             - if roommate.intervals
                 - roommate.intervals.each do |interval|
                     - if interval.schedule == @schedule
@@ -18,7 +33,7 @@
 
 
 .new-interval
-    h2 Add New Avaliable Time
+    h1 Add New Avaliable Time
 	= form_for @interval do |form| %
 		.start
 			p start:
