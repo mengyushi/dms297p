@@ -26,8 +26,8 @@
 
     .exist-interval
         - @roommates.each do |roommate|
-            p.from #{roommate.name}
             - if roommate.intervals
+                p.from #{roommate.name}
                 - roommate.intervals.each do |interval|
                     - if interval.schedule == @schedule
                         p.content from #{interval.start} to #{interval.end}
