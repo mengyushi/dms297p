@@ -1,0 +1,11 @@
+.schedule
+  h1 Scheduler
+  = link_to 'New Schedule', new_schedule_path
+  - @schedules.each do |schedule|
+    table
+      tbody
+        tr
+          th = schedule.title
+          td = schedule.description
+          td = schedule.place
+          td = link_to 'check', schedule_path(schedule)

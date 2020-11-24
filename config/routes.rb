@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
   resources :dices
+  resources :schedules
+  resources :intervals
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
