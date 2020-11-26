@@ -15,6 +15,11 @@ class IntervalsController < ApplicationController
 
 	def index
 		@interval = Interval.new
+		@all_intervals = Interval.where(schedule__id:@schedule.id)
+	end
+
+	def show
+		@interval = Interval.new
 	end
 
 	def destroy

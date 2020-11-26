@@ -1,34 +1,50 @@
-.schedule
+.schedules
     table
         tbody
+        tr
+            th title
+            td description
+            td place
         tr
             th = @schedule.title
             td = @schedule.description
             td = @schedule.place
 
-.my-roommates
-    - @roommates.each do |roommate|
-        .my-roommate
-            = link_to user_path(roommate)
-                i.fa.fa-id-badge #{roommate.name}
-            - if roommate.intervals
+    - if @common.length > 0
+        h1 time in common:
+        table
+            tbody
+            tr
+                th start
+                th end
+            - @common.each do |time|
+                tr
+                    td = time[0]
+                    td = time[1]
+    - else
+        p No Common time found. Try input some more avaliable times!
+
+    .exist-interval
+        - @roommates.each do |roommate|
+            - if roommate.intervals.length > 0
+                p.from #{roommate.name}
                 - roommate.intervals.each do |interval|
                     - if interval.schedule == @schedule
-                        p from #{interval.start} to #{interval.end}
+                        p.content from #{interval.start} to #{interval.end}
 
 
-.new-interval
-    h2 Add New Avaliable Time
-	= form_for @interval do |form| %
-		.start
-			p start:
-            = form.datetime_local_field :start, {:required => true, :value => "YYYY-MM-DDT00:00:00"}
-			/ = form.text_field :start, {:required => true}
-	 	.end
-			p end:
-			/ = form.text_field :end, {:required => true}
-            = form.datetime_local_field :end, {:required => true, :value => "YYYY-MM-DDT00:00:00"}
+    .new-interval
+        h1 Add New Avaliable Time
+        = form_for @interval do |form| %
+            .start
+                p start:
+                = form.datetime_local_field :start, {:required => true, :value => "YYYY-MM-DDT00:00:00"}
+                / = form.text_field :start, {:required => true}
+            .end
+                p end:
+                / = form.text_field :end, {:required => true}
+                = form.datetime_local_field :end, {:required => true, :value => "YYYY-MM-DDT00:00:00"}
 
-		= form.hidden_field :schedule_id, :value => @schedule.id
+            = form.hidden_field :schedule_id, :value => @schedule.id
 
-		= form.submit 'Add Avaliability', class: 'new-interval-submit'
+            = form.submit 'Add Avaliability', class: 'new-interval-submit'
