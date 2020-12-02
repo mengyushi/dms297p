@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		@user.balance = 0
 		if @user.save
-			@user.send_activation_email
-			flash[:info] = "Please check your email to activate your account."
+			# @user.send_activation_email
+			# flash[:info] = "Please check your email to activate your account."
 			redirect_to '/login'
 		else
 			flash[:danger] = "Sth Goes Wrong!"
